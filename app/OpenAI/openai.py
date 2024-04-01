@@ -25,9 +25,8 @@ def trim_prompt(prompt, requested_tokens, chosen_model):
         trimmed_prompt.pop(1)
     return trimmed_prompt
 
-def gpt_response(prompt, chosen_model):
+def gpt_response(prompt, chosen_model, requested_tokens):
     "Returns a response from the chosen GPT-model based on the prompt"
-    requested_tokens = 512
     trimmed = trim_prompt(prompt, requested_tokens, chosen_model)
     answer = openai.ChatCompletion.create(
         model = chosen_model,
